@@ -6,9 +6,17 @@ export interface Recipe {
     cookingTime: number;
     servings: number;
     imageUrl: string;
-    steps: string[];
-    ingredients: {
-      name: string;
-      quantity: string;
-    }[];
+    steps: Step[];
+    ingredients: Ingredient[];
   }
+
+
+export interface Step {
+    stepNumber: number;
+    instruction: string;
+}
+
+export interface Ingredient {
+    name: string;
+    quantity: string;
+}

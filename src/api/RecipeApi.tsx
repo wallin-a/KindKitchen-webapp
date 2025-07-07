@@ -7,3 +7,8 @@ export const getRecipes = async (): Promise<Recipe[]> => {
   const response = await axios.get<Recipe[]>(`${API_BASE_URL}/Recipe`);
   return response.data;
 };
+
+export const getRecipeById = async (id: number): Promise<Recipe> => {
+    const response = await axios.get<Recipe>(`${API_BASE_URL}/Recipe/${id}`);
+    return response.data;
+};
