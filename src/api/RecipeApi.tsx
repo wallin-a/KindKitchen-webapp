@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { Recipe } from '../Interfaces/Recipe';
 import { CreateNewRecipe } from '../Interfaces/CreateNewRecipe';
-
-const API_BASE_URL = 'https://localhost:7274';
+import { API_BASE_URL } from '../utilities/constants';
 
 export const getRecipes = async (): Promise<Recipe[]> => {
   const response = await axios.get<Recipe[]>(`${API_BASE_URL}/Recipe`);

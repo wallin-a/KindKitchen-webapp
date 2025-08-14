@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Recipe } from "../Interfaces/Recipe";
-import { getRecipeById } from "../api/RecipeApi";
+import { API_BASE_URL, getRecipeById } from "../api/RecipeApi";
 import LinkToHomePage from "../components/LinkToHomePage";
 import { CheckCircleIcon, HeartIcon } from '@heroicons/react/24/outline';
 
@@ -53,7 +53,7 @@ const RecipePage = () => {
 
             <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
             <img
-                src={recipe.imageUrl}
+                src={`${API_BASE_URL}/Image/${recipe.id}/image`}
                 alt={recipe.title}
                 className="w-full h-64 object-cover rounded-lg mb-4"
             />

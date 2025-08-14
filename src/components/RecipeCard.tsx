@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../api/RecipeApi";
 
 interface RecipeCardProps {
     id: number;
@@ -15,7 +16,7 @@ const RecipeCard = (props: RecipeCardProps) => {
             to={`/recipe/${props.id}`}
             >
             <img
-              src={props.imageUrl}
+              src={`${API_BASE_URL}/Image/${props.id}/image`}
               alt={props.title}
               className="w-full h-48 object-cover"
             />

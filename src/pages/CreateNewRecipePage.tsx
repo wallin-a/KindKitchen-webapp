@@ -3,9 +3,13 @@ import { postRecipe } from "../api/RecipeApi";
 import toast from 'react-hot-toast';
 import axios from "axios";
 import { CreateNewRecipe } from "../Interfaces/CreateNewRecipe";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../utilities/constants";
 
 const CreateNewRecipePage = () => {
 
+    const navigate = useNavigate();
+    
     const { register, handleSubmit, control, reset, getValues, setValue, formState: { errors } } = useForm<CreateNewRecipe>({
         defaultValues: {
             steps: [""],
@@ -26,6 +30,7 @@ const CreateNewRecipePage = () => {
             await postRecipe(data);
             toast.success("Recipe created successfully!");
             reset();
+            navigate(ROUTES.HOME);
         } catch (error) {
             if (axios.isAxiosError(error) && error.response?.status === 400) {
                 toast.error("Validation error: Please check your input.");
