@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Recipe } from "../Interfaces/Recipe";
-import { API_BASE_URL, getRecipeById } from "../api/RecipeApi";
+import { getRecipeById } from "../api/RecipeApi";
 import LinkToHomePage from "../components/LinkToHomePage";
 import { CheckCircleIcon, HeartIcon } from '@heroicons/react/24/outline';
+import { API_BASE_URL } from "../utilities/constants";
 
 
 const RecipePage = () => {
