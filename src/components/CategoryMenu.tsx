@@ -1,12 +1,15 @@
 import { useState } from "react";
 import TabButton from "./TabButton";
 
-const CategoryMenu = () => {
+interface props {
+     onSelect: (categoryId?: number) => void;
+}
+const CategoryMenu = (props: props) => {
     const [selectedId, setSelectedId] = useState<number>(0);
 
     const handleSelect = (selectedButton: number) => {
         setSelectedId(selectedButton);
-        console.log(selectedButton)
+        props.onSelect(selectedButton);
     }
 
     return (

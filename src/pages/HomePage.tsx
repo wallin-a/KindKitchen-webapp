@@ -5,24 +5,30 @@ import RecipeCard from "../components/RecipeCard";
 import { Link } from "react-router-dom";
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import CategoryMenu from "../components/CategoryMenu";
+import { getCategoryWithRecipes } from "../api/CategoryApi";
 
 
 const HomePage = () => {
 
     const [recipes, setRecipes] = useState<Recipe[]>([]);
 
-    useEffect(() => {
-        const fetchRecipes = async () => {
-        try{
+    const handleCategorySelect = async (categoryId?: number) => {
+        try {
+            if (!categoryId) {
             const data = await getRecipes();
             setRecipes(data);
-        } catch(err) {
-            console.error(err)
+            } else {
+            const data = await getCategoryWithRecipes(categoryId);
+            setRecipes(data.recipes);
+            }
+        } catch (err) {
+            console.error(err);
         }
-        }
+    };
 
-        fetchRecipes();
-    }, [])
+    useEffect(() => {
+    handleCategorySelect(); 
+    }, []);
 
     return (
     <div className="max-w-7xl mx-auto p-6">
@@ -33,8 +39,8 @@ const HomePage = () => {
                     <p>add a new recipe</p>
                 </div>
             </Link>
-
-        <CategoryMenu/>
+ 
+        <CategoryMenu onSelect={handleCategorySelect}/>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {recipes.map((recipe) => (
