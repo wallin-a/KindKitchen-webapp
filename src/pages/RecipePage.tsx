@@ -56,7 +56,7 @@ const RecipePage = () => {
             <img
                 src={`${API_BASE_URL}/Image/${recipe.id}/image`}
                 alt={recipe.title}
-                className="w-full h-64 object-cover rounded-lg mb-4"
+                className="w-full object-cover rounded-lg mb-4"
             />
             <p className="mb-2 text-gray-700">{recipe.description}</p>
             <div className="mb-4 text-gray-600">
